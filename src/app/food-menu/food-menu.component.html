@@ -1,5 +1,6 @@
 <div class="flex-container">
     <div class="flex-menu">
+        <h2>Food Menu</h2>
 <table class="table">
     <thead>
         <th> Id</th>
@@ -18,6 +19,6 @@
 </table>
 </div>
 <div class="flex-bill">
-    <app-bill [billItems]="billItems" (removeItem)=addRemovedItem($event)></app-bill>
+    <app-bill [billItems]="billItems" [total]="total"(removeItem)=addRemovedItem($event) (newTotalEvent)="updateTotal($event)"></app-bill>
 </div>
 </div>

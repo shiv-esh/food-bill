@@ -8,21 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./bill.component.css']
 })
 export class BillComponent implements OnInit {
-  public total:number=0;
+  
 @Input() billItems:FoodItem[]=[]
+@Input() total:number=0;
 @Output() removeItem=new EventEmitter<{fooditem:FoodItem}>();
-  constructor(private http: HttpClient,private route:Router) { }
+@Output() newTotalEvent=new EventEmitter<{newTotal:number}>();
 
+
+  constructor(private http: HttpClient,private route:Router) { 
+    
+  }
+ 
   ngOnInit(): void {
-    this.calculateTotal();
+   
   }
 
+  
   onRemoveItem(item:FoodItem){
     this.removeItem.emit({fooditem:item})
+    this.total=this.total-item.item_cost;
+    this.newTotalEvent.emit({newTotal:this.total})
     var index =
       this.billItems.indexOf(item)
      
       this.billItems.splice(index, 1);
+      
   }
 
 
@@ -30,7 +40,9 @@ export class BillComponent implements OnInit {
     this.billItems.forEach(element => {
       
       this.total=this.total+element.item_cost;
+    
     });
+    console.log(this.total);
   }
  
 }
