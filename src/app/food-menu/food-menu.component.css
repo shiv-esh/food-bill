@@ -1,14 +1,19 @@
 .flex-container{
     display: flex;
+    margin-top: 20px;
 }
 
 .flex-menu{
-    flex:0.7;
+ 
+    flex:1;
     border: 2px solid ;
     margin-right: 20px;
+   
 }
 
 .flex-bill{
+  
     border: 2px solid ;
-    margin-right: 20px;
+    margin-left: 20px;
 }
+
